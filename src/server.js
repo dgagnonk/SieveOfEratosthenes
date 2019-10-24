@@ -2,13 +2,17 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var serverhelpers = require("./serverhelpers");
+var cors = require("cors");
 
-app.use ( bodyParser.json( { type: "application/json" } ));
+app.use(cors());
+
+app.use ( bodyParser.json( { type: "*/*" } ));
 
 app.post("/setprime", (req, res) => {
-    console.log("Received number " + req.body.prime + " from frontend");
+    console.log(req.body);
+    console.log("Received number " + req.body.number + " from frontend");
 
-    let primes = getAllPrimes(req.body.prime);
+    let primes = getAllPrimes(req.body.number);
     let median = getMedianArray(primes);
 
     console.log("Primes: " + primes);
