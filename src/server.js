@@ -17,6 +17,9 @@ app.post("/setprime", (req, res) => {
 
     console.log("Primes: " + primes);
     console.log("Median: " + median);
+
+    res.setHeader("Content-type", "application/json");
+    return res.send(median);
 });
 
 app.listen(3000);

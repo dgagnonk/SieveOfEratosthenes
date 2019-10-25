@@ -18,8 +18,6 @@ class NumberInputField extends Component {
     }
 
     onError(errText) {
-        console.log(errText);
-
         this.setState((previousState, props) => {
             return { errorText: errText}
         })
@@ -28,18 +26,22 @@ class NumberInputField extends Component {
     onSubmit(e) {
         e.preventDefault();
         console.log("> Submitting form");
-        console.log(this.state);
+        //console.log(this.state);
 
         fetch('http://localhost:3000/setprime', {
             method: 'POST',
             body: JSON.stringify(this.state),
         })
-        .then(r => console.log(r))
+        .then(r => {
+            return r.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
         .catch(e => {
             console.log(e);
             this.onError(e.toString());
         })
-        
     }
 
     render() {
