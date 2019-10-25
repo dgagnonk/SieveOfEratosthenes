@@ -6,8 +6,10 @@ class NumberInputField extends Component {
         super();
         this.state = {
             number: 0,
-            errorText: ''
+            errorText: '',
+            median: 'N/A'
         }
+
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -19,7 +21,10 @@ class NumberInputField extends Component {
 
     onError(errText) {
         this.setState((previousState, props) => {
-            return { errorText: errText}
+            return { 
+                errorText: errText + " ('" + this.state.number + "')",
+                median: "N/A"
+            }
         })
     }
 
@@ -33,10 +38,20 @@ class NumberInputField extends Component {
             body: JSON.stringify(this.state),
         })
         .then(r => {
+            console.log(r);
+            if (r.status !== 200) {
+                throw r.statusText;
+            } 
             return r.json();
         })
         .then(data => {
             console.log(data);
+            this.setState((previousState, props) => {
+                return { 
+                    errorText: '',
+                    median: data
+                }
+            })
         })
         .catch(e => {
             console.log(e);
@@ -52,6 +67,7 @@ class NumberInputField extends Component {
                     <input type="submit" value="Submit"/>
                 </form>
                 <p className="errorLabel">{this.state.errorText}</p>
+                <p className="medianLabel">Median: {this.state.median.toString()}</p>
             </div>
         );
 

@@ -10,16 +10,30 @@ app.use ( bodyParser.json( { type: "*/*" } ));
 
 app.post("/setprime", (req, res) => {
     console.log(req.body);
-    console.log("Received number " + req.body.number + " from frontend");
+    console.log("Received " + req.body.number + " from frontend");
 
-    let primes = getAllPrimes(req.body.number);
-    let median = getMedianArray(primes);
+    let num = parseInt(req.body.number);
+    let errorMsg = "";
 
-    console.log("Primes: " + primes);
-    console.log("Median: " + median);
+    if (Number.isInteger(num) && num <= Number.MAX_SAFE_INTEGER && num >= 2) {
+        let primes = getAllPrimes(req.body.number);
+        let median = getMedianArray(primes);
+    
+        console.log("Primes: " + primes);
+        console.log("Median: " + median);
+    
+        res.setHeader("Content-type", "application/json");
+        return res.send(median);
+    } else if (num < 2) {
+        errorMsg = "Invalid input. No primes for this number.";
+    } else {
+        errorMsg = "Invalid input.";
+    }
 
-    res.setHeader("Content-type", "application/json");
-    return res.send(median);
+    console.log(errorMsg);
+    res.statusMessage = errorMsg;
+    return res.status(400).send();
+
 });
 
 app.listen(3000);
