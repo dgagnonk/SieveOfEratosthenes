@@ -7,8 +7,10 @@ function App() {
     <div className="App">
       <div className="container">
         <div className="row">
-          <h1 className="header">MedianPrimes</h1>
-          <p className="description">Enter a number and click submit. You will receive the median element(s) of the list of primes under that number.</p>
+          <div className="col-sm">
+            <h1 className="header">MedianPrimes</h1>
+            <p className="description">Enter a number and click submit. You will receive the median element(s) of the list of primes under that number.</p>
+          </div>
         </div>
         <div className="row">
           <NumberInputField />

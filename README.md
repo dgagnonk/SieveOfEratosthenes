@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# MedianPrimes
 
-In the project directory, you can run:
+With server and client running, user enters a number into the textbox and clicks "Submit". Prime numbers lesser than or equal to the entered number are calculated on the server, and the median array element(s) are returned to the client.
 
-### `npm start`
+E.g. user enters `10`, so `2,3,5,7` are primes which means `3,5` are returned.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Stack
+**Backend:** Express.js/Node.js
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+**Frontend:** HTML, CSS, JavaScript, React
 
-### `npm test`
+## Errors
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Most errors occur when there is bad input or the server isn't running. These errors come in the form of HTTP code 400 (Bad Request). If the number entered is too large, too small, or negative, the error message lets the user know that the number entered doesn't have any valid primes.
 
-### `npm run build`
+Otherwise, i.e. with the server not running, a standard "Bad Request" error message is displayed.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Requirements and Setup
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+ - `npm` package manager
+ - Run `npm install` to install `package.json` packages
+ - Run `npm start` from root directory, and `node server.js` from the `src/server/` directory
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## About the Code
+The code is 100% commented, so feel free to peruse!
 
-### `npm run eject`
+## Screenshots
+**Server:**
+![server.js](https://i.imgur.com/3to94Cu.png)
+**Client:**
+![enter image description here](https://i.imgur.com/HreOE62.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
