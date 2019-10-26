@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import "./NumberInputField.css";
 
 class NumberInputField extends Component {
 
@@ -16,12 +17,12 @@ class NumberInputField extends Component {
     }
 
     onChange(e) {
-        this.setState({[e.target.name]:e.target.value});
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     onError(errText) {
         this.setState((previousState, props) => {
-            return { 
+            return {
                 errorText: errText + " ('" + this.state.number + "')",
                 median: "N/A"
             }
@@ -37,38 +38,41 @@ class NumberInputField extends Component {
             method: 'POST',
             body: JSON.stringify(this.state),
         })
-        .then(r => {
-            console.log(r);
-            if (r.status !== 200) {
-                throw r.statusText;
-            } 
-            return r.json();
-        })
-        .then(data => {
-            console.log(data);
-            this.setState((previousState, props) => {
-                return { 
-                    errorText: '',
-                    median: data
+            .then(r => {
+                console.log(r);
+                if (r.status !== 200) {
+                    throw r.statusText;
                 }
+                return r.json();
             })
-        })
-        .catch(e => {
-            console.log(e);
-            this.onError(e.toString());
-        })
+            .then(data => {
+                console.log(data);
+                this.setState((previousState, props) => {
+                    return {
+                        errorText: '',
+                        median: data
+                    }
+                })
+            })
+            .catch(e => {
+                console.log(e);
+                this.onError(e.toString());
+            })
     }
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.onSubmit}>
-                    <input type="text" name="number" onChange={this.onChange}/>
-                    <input type="submit" value="Submit"/>
-                </form>
-                <p className="errorLabel">{this.state.errorText}</p>
-                <p className="medianLabel">Median: {this.state.median.toString()}</p>
+            <div className="col-sm">
+                <div align="center">
+                    <form onSubmit={this.onSubmit}>
+                        <input id="txtNum" type="text" name="number" onChange={this.onChange} className="form-control" />
+                        <button id="btnSubmit" type="submit" className="btn btn-primary">Submit</button>
+                    </form>
+                    <p id="lblError">{this.state.errorText}</p>
+                    <p id="lblMedian">Median: {this.state.median.toString()}</p>
+                </div>
             </div>
+
         );
 
     }

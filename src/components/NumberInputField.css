@@ -1,0 +1,22 @@
+#btnSubmit
+{
+    margin-left: 10px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#txtNum
+{
+    max-width: 200px;
+    display: inline-block;
+}
+
+#lblError
+{
+    color: red;
+}
+
+#lblMedian
+{
+    color: blue;
+}
