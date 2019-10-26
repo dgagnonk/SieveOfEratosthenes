@@ -3,6 +3,8 @@
 
 With server and client running, user enters a number into the textbox and clicks "Submit". Prime numbers lesser than or equal to the entered number are calculated on the server, and the median array element(s) are returned to the client.
 
+Uses Sieve of Eratosthenes for calculating primes.
+
 E.g. user enters `10`, so `2,3,5,7` are primes which means `3,5` are returned.
 
 ## Stack
@@ -28,6 +30,8 @@ The code is 100% commented, so feel free to peruse!
 ## Screenshots
 **Server:**
 ![server.js](https://i.imgur.com/3to94Cu.png)
+
+
 **Client:**
 ![enter image description here](https://i.imgur.com/HreOE62.png)
 

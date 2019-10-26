@@ -1,9 +1,16 @@
+/*
+    serverHelpers.js
+    ===========
+    JS functions to calculate prime numbers and find median array.
+*/
+
+// Gets all primes less than or equal to "num" (int)
 getAllPrimes = (num) => {
     
     if (num < 2) return [];
 
     let allNums = [];
-    let primes = [2];
+    let primes = [2]; // Start with 2 since it is the lowest prime, always
     let markedP = [];
 
     for (let i = 2; i <= num; i++) {
@@ -12,6 +19,7 @@ getAllPrimes = (num) => {
 
     let p = 2;
 
+    // Sieve of Eratosthenes
     while (true) {
         let pSq = Math.pow(p, 2);
 
@@ -36,6 +44,8 @@ getAllPrimes = (num) => {
     return primes;
 }
 
+// Give an array, will return the median array.
+// Returns single element for odd element #s, and two elements for even elements
 getMedianArray = (array) => {
 
     let median = [];
